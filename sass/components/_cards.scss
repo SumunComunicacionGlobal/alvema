@@ -1,0 +1,21 @@
+.card-arrow {
+    position: relative;
+    transition: background-color .3s ease-in-out;
+
+    svg {
+        transition: transform .3s ease-in-out;
+    }
+
+    .stretched-link a {
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: var(--wp--preset--color--primary-100) !important;
+       
+        svg {
+            transform: rotate(45deg);
+        }
+    }
+
+}

@@ -1,0 +1,15 @@
+@use '../abstracts/mixins' as *;
+
+#masthead {
+
+    position: absolute;
+    top: calc(var(--wp--custom--layout--block-gap-large) + var(--wp-admin--admin-bar--position-offset, 0px));
+    width: 100%;
+    z-index: 6;
+
+    @media ($below-tablet) {
+        .btns-menu-desktop {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@use '../abstracts/mixins' as *;
+
+#hero {
+    position: relative;
+
+    @media ($below-mobile) {
+        min-height: 688px !important;
+    }
+
+    h1.wp-block-post-title {
+        width: fit-content;
+        border: 1px solid;
+        border-radius: var(--wp--custom--border-radius--rounded);
+        padding: .5rem;
+    }
+
+    .wp-block-buttons>.wp-block-button.wp-block-button__width-100 {
+        @media ($above-mobile) {
+            flex-basis: auto;
+            width: auto;
+        }
+    }
+}
+
+.tagline {
+    width: fit-content;
+    border: 1px solid;
+    border-radius: var(--wp--custom--border-radius--rounded);
+    padding: .5rem;
+}

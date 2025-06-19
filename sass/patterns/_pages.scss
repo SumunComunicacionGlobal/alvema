@@ -1,0 +1,45 @@
+@use '../abstracts/mixins' as *;
+
+.wp-block-group.grid-check {
+
+    @media ($below-mobile) {
+        & > .wp-block-group {
+            min-height: 10rem !important;
+        }
+    }
+
+}
+
+.wp-block-group.grid-imgs {
+    @media ($below-mobile) {
+        & > .wp-block-cover {
+            min-height: 12rem !important;
+        }
+    }
+}
+
+#manifiesto.wp-block-group {
+    column-count: 4;
+    display: block;
+    @media ($below-tablet) {
+        column-count: 2;
+        
+        & > .wp-block-image {
+            display: none;
+        }
+    }
+
+    @media ($below-mobile) {
+        column-count: 1;
+        & > .wp-block-group {
+            min-height: 180px !important;
+        }
+    }
+
+    & > .wp-block-group, & > .wp-block-image  {
+        break-inside: avoid;
+        margin-bottom: var(--wp--custom--layout--block-gap);
+        background: white;
+        overflow: hidden;
+    }
+}

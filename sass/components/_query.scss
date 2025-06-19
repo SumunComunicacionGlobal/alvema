@@ -1,0 +1,91 @@
+@use '../abstracts/mixins' as *;
+
+.wp-block-query {
+    .wp-block-post {
+        a {
+            text-decoration: none;
+            overflow: hidden;
+            
+            img.wp-post-image {    
+                transition: transform 1s ease-in-out;
+                will-change: border-radius;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        .card-blog {
+            position: relative;
+
+            .taxonomy-category.wp-block-post-terms {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                padding: .25rem 0.5rem;
+                border-radius: var(--wp--custom--border-radius--rounded);
+                z-index: 1;
+                background-color: var(--wp--preset--color--primary);  
+            }
+
+            figure.wp-block-post-featured-image {
+                border-radius: var(--wp--custom--border-radius--lg);
+                overflow: hidden;
+            }
+        }
+
+        .wp-block-post-excerpt__more-text {
+            display: flex;
+            margin-top: var(--wp--preset--spacing--20);
+            > a {
+                width: 100%;
+                justify-content: start;
+            }
+        }
+    }
+}
+
+
+.wp-block-categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    
+    li.cat-item {
+        a {
+            text-decoration: none;
+            background-color:  var(--wp--preset--color--primary-80);
+            border-radius: var(--wp--custom--border-radius--rounded);
+            color: var(--wp--preset--color--neutral-white);
+            padding: .25rem .5rem;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            font-size: var(--wp--preset--font-size--small);
+
+            &:hover {
+                background-color: var(--wp--preset--color--primary-10);
+            }
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: .25rem;
+                height: .25rem;
+                margin-right: .25rem;
+                background-color: var(--wp--preset--color--neutral-white);
+                border-radius: var(--wp--custom--border-radius--rounded);
+            }
+        }
+    }
+}
+
+
+.is-style-is-related-posts .taxonomy-category.has-heading-4-font-size > a {
+    color: initial;
+    text-decoration: none;
+}
