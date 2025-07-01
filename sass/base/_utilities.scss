@@ -16,9 +16,20 @@ a.stretched-link, .stretched-link > a {
     } 
 }
 
+.stretched-link {
+    transform: none !important;
+}
+
 .column-reverse-mobile {
-    @media ($below-tablet) {
+    @media ($below-mobile) {
         flex-direction: column-reverse;
+        display: flex;
+    }
+}
+
+.row-reverse-mobile {
+    @media ($below-tablet) {
+        flex-direction: row-reverse;
         display: flex;
     }
 }

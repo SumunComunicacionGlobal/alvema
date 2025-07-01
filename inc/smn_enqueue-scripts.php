@@ -14,6 +14,10 @@
         wp_enqueue_script( 'slick-init-js', get_template_directory_uri() . '/assets/slick/init.js', array('jquery'), null, true );
     }
 
+    wp_localize_script('alvema-js', 'alvemaVars', [
+        'themeUrl' => get_stylesheet_directory_uri()
+    ]);
+
 }
 add_action( 'wp_enqueue_scripts', 'smn_scripts' );
 
@@ -36,14 +40,16 @@ add_action( 'enqueue_block_editor_assets', 'smn_gutenberg_scripts' );
 /**
  * GSAP script in WordPress
 */
-// wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
+
 function theme_gsap_script(){
     // The core GSAP library
     wp_enqueue_script( 'gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js', array(), false, true );
     // ScrollTrigger - with gsap.js passed as a dependency
     wp_enqueue_script( 'gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js', array('gsap-js'), false, true );
-    // Your animation code file - with gsap.js and gsap-st passed as a dependency
-    wp_enqueue_script( 'gsap-js2', get_template_directory_uri() . '/assets/js/gsap.js', array('gsap-js', 'gsap-st'), false, true );
+    // ScrollToPlugin - with gsap.js passed as a dependency
+    wp_enqueue_script( 'gsap-scrollto', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js', array('gsap-js'), false, true );
+    // Your animation code file - with gsap.js, gsap-st, and gsap-scrollto passed as dependencies
+    wp_enqueue_script( 'gsap-js2', get_template_directory_uri() . '/assets/js/gsap.js', array('gsap-js', 'gsap-st', 'gsap-scrollto'), false, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_gsap_script' );

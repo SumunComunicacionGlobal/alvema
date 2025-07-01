@@ -53,6 +53,14 @@
       "type": "boolean",
       "default": false
     },
+    "adaptiveHeight": {
+      "type": "boolean",
+      "default": false
+    },
+    "fade": {
+      "type": "boolean",
+      "default": false
+    },
     "rtl": {
       "type": "boolean"
     },

@@ -4,7 +4,11 @@
     position: relative;
 
     @media ($below-mobile) {
-        min-height: 688px !important;
+        min-height: 520px !important;
+
+        .home & {
+            min-height: 768px !important;
+        }
     }
 
     h1.wp-block-post-title {

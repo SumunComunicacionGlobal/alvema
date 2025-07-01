@@ -17,3 +17,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Incluye ScrollToPlugin de GSAP en tu proyecto
+gsap.registerPlugin(ScrollToPlugin);
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.length > 1 && href.startsWith('#')) {
+            const target = document.getElementById(href.substring(1));
+            if (target) {
+                e.preventDefault();
+                gsap.to(window, {duration: 0.7, scrollTo: {y: target, offsetY: 0}});
+            }
+        }
+    });
+});

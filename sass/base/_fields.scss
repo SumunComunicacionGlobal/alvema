@@ -50,13 +50,13 @@ textarea {
 }
 
 button[type="submit"], input[type="submit"] {
-	background-color: transparent;
 	color: inherit;
-	border: 2px solid;
-	font-weight: bold;
+	background-color: var(--wp--preset--color--primary);
+	border: 0;
 	border-radius: var(--wp--custom--border-radius--rounded);
 	padding: calc(0.5rem + 4px) 1.5em;
 	cursor: pointer;
+	width: 100%;
 
 	&:after {
 		content: '';

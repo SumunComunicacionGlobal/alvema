@@ -18,6 +18,7 @@
     padding: var(--wp--custom--layout--block-gap-large) !important;
     background-color: var(--wp--preset--color--primary) !important;
     z-index: 10;
+    border-radius: var(--wp--custom--border-radius--xl) 0 0 var(--wp--custom--border-radius--xl);
    
     &.is-menu-open {
         overflow-x: hidden;
@@ -29,12 +30,31 @@
 
     ul.wp-block-navigation__container {
         width: 100%;
+        gap: 0;
 
-        span.wp-block-navigation-item__label{
+        span.wp-block-navigation-item__label {
             border-bottom: 1px solid;
             width: 100%;
             display: block;
             padding-bottom: var(--wp--preset--spacing--20);
+            padding-top: var(--wp--preset--spacing--20);
+        }
+
+        > li.wp-block-navigation-item {
+            &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                background-color:rgba(255, 255, 255, 0.15) !important;
+                padding-left: var(--wp--custom--layout--block-gap);
+                padding-right: var(--wp--custom--layout--block-gap);
+            }
+            &:nth-child(1) {
+                border-radius: var(--wp--custom--border-radius--lg) var(--wp--custom--border-radius--lg) 0 0;
+            }
+            &:nth-child(4) {
+                border-radius: 0 0 var(--wp--custom--border-radius--lg) var(--wp--custom--border-radius--lg);
+                span.wp-block-navigation-item__label {
+                    border-bottom: 0;
+                }
+            }
         }
 
         li.wp-block-navigation-item {
@@ -58,7 +78,7 @@
                     position: absolute;
                     right: 0;
                     top: 50%;
-                    transform: translateY(calc(-50% - 0.75rem));
+                    transform: translateY(calc(-50% - 0.25rem));
                 }
 
                 ul.wp-block-navigation__submenu-container {
@@ -71,7 +91,6 @@
                     left: 2.5rem;
                     right: 2.5rem;
                     background-color: var(--wp--preset--color--primary) !important;
-                    gap: var(--wp--custom--layout--block-gap);
                     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
                     &.is-open-menu {

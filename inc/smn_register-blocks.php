@@ -9,7 +9,6 @@
 
 
 function smn_register_blocks() {
-    register_block_type( get_stylesheet_directory() . '/custom-blocks/marquee' );
     register_block_type( get_stylesheet_directory() . '/custom-blocks/carousel', [
         'render_callback' => ['Carousel_Slider_Block', 'render_carousel']
     ]);

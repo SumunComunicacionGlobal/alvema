@@ -1,3 +1,5 @@
+@use '../abstracts/mixins' as *;
+
 .card-arrow {
     position: relative;
     transition: background-color .3s ease-in-out;
@@ -18,4 +20,64 @@
         }
     }
 
+    &.wp-block-cover {
+        
+
+        .wp-block-cover__inner-container {
+            height: 100%;
+
+            a {
+                color: var(--wp--preset--color--neutral-white) !important;
+            }
+
+            .card-arrow--content {
+                @media ($above-tablet) {
+                    opacity: 0 !important;
+                    transition: opacity .3s ease-in-out; 
+                    position: absolute;
+                    bottom: 0;
+                }
+                
+            }
+
+            .card-arrow--title, .card-arrow--title a {
+                transform: none !important;
+                position: initial;
+                transition: color .5s ease-in-out; 
+            }
+        }
+
+        .wp-block-cover__background  {
+            transition: opacity .3s ease-in-out, background-color .5s ease-in-out;
+        }
+        
+        @media ($above-tablet) {
+
+            &:hover {
+
+                .wp-block-cover__background {
+                    background-color: var(--wp--preset--color--primary) !important;
+                    opacity: 1 !important;
+                }
+
+                .card-arrow--content {
+                    opacity: 1 !important;
+                }
+
+                .card-arrow--title, .card-arrow--title a {
+                    color: var(--wp--preset--color--primary) !important;
+
+                }
+            }
+            
+        }
+        
+    }
+
+}
+
+.card-contact {
+    @media ($above-tablet) {
+        width: fit-content;
+    }
 }

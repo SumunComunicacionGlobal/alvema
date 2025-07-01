@@ -76,6 +76,14 @@
                         variableWidth: {
                             type: "boolean",
                             default: !1
+                        },
+                        adaptiveHeight: {
+                            type: "boolean",
+                            default: false
+                        },
+                        fade: {
+                            type: "boolean",
+                            default: false
                         }
                     },
                     save({
@@ -97,7 +105,9 @@
                             responsiveWidth: m,
                             responsiveSlides: f,
                             vertical: k,
-                            variableWidth: W
+                            variableWidth: W,
+                            adaptiveHeight: A,
+                            fade: fa 
                         } = e, g = {
                             slidesToShow: l,
                             slidesToScroll: s,
@@ -110,6 +120,8 @@
                             rtl: v,
                             vertical: k,
                             variableWidth: W,
+                            adaptiveHeight: A,
+                            fade: fa,
                             responsive: [{
                                 ...m ? {
                                     breakpoint: m + 1
@@ -197,7 +209,7 @@
                             arrows: d,
                             dots: p,
                             responsiveWidth: u,
-                            responsiveSlides: b
+                            responsiveSlides: b,
                         } = e, h = {
                             slidesToShow: l,
                             slidesToScroll: s,
@@ -263,7 +275,9 @@
                         responsiveSlides: y,
                         responsiveSlidesToScroll: T,
                         vertical: k,
-                        variableWidth: W
+                        variableWidth: W,
+                        adaptiveHeight: A,
+                        fade: fa
                     } = e, _ = (0, d.useSelect)((e => e("core/block-editor").getBlock(l).innerBlocks)), C = (0, a.useBlockProps)({
                         className: c()(`cb-shows-${o}-slides`, _.length + 1 > o ? "cb-show-scrollbar" : "cb-hide-scrollbar")
                     }), x = (0, n.createElement)("div", {
@@ -346,6 +360,17 @@
                         onChange: e => t({
                             variableWidth: e
                         })
+                    }), (0, n.createElement)(i.ToggleControl, {
+                        label: (0, s.__)("Fade"),
+                        checked: !!fa,
+                        onChange: e => t({
+                            fade: e
+                        })
+
+                    }), (0, n.createElement)(i.ToggleControl, {
+                        label: (0, s.__)("Adaptive Height"),
+                        checked: !!e.adaptiveHeight,
+                        onChange: v => t({ adaptiveHeight: v })
                     })), (0, n.createElement)(i.PanelBody, {
                         title: (0, s.__)("Responsive Settings"),
                         initialOpen: !1
@@ -400,7 +425,9 @@
                         responsiveSlides: h,
                         responsiveSlidesToScroll: v,
                         vertical: m,
-                        variableWidth: W
+                        variableWidth: W,
+                        adaptiveHeight: A,
+                        fade: fa,
                     } = e, f = {
                         slidesToShow: t,
                         slidesToScroll: l,
@@ -413,6 +440,8 @@
                         rtl: u,
                         vertical: m,
                         variableWidth: W,
+                        adaptiveHeight: A,
+                        fade: fa,
                         responsive: [{
                             ...b ? {
                                 breakpoint: b + 1

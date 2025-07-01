@@ -45,7 +45,7 @@
             background-color: var(--wp--preset--color--primary);
             border-radius: var(--wp--custom--border-radius--rounded);
              @media ($below-mobile) {
-                top: 1.75rem
+                top: 1.25rem
             }
         }
 
@@ -57,6 +57,12 @@
                  @media ($below-mobile) {
                     top: 2.5rem;
                     height: 1px;
+                }
+            }
+
+            &::after {
+                @media ($below-mobile) {
+                    top: 2rem;
                 }
             }
         }

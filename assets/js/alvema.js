@@ -199,3 +199,91 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// Añade enlaces de descarga a los campos ACF específicos
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.is-acf-field.link-to-catalog .value').forEach(function(el) {
+    const url = el.textContent.trim();
+    if (url.match(/^https?:\/\//)) {
+    const iconUrl = alvemaVars.themeUrl + '/assets/icons/icon-download.svg';
+    el.innerHTML = `
+        <a class="wp-block-button__link wp-element-button"
+           href="${url}"
+           target="_blank"
+           rel="noopener"
+           style="padding-top:0.5rem;padding-bottom:0.5rem;display:inline-flex;align-items:center;gap:0.5rem;">
+          Descargar
+          <img loading="lazy" decoding="async" width="24" height="24"
+               style="width: 24px;"
+               src="${iconUrl}"
+               alt="">
+        </a>
+      `;
+    }
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.jQuery) return;
+
+  document.querySelectorAll('.wp-block-buttons').forEach(function(buttonGroup) {
+    const prevBtn = buttonGroup.querySelector('.btn-prev-slide');
+    const nextBtn = buttonGroup.querySelector('.btn-next-slide');
+    let carousel = buttonGroup.nextElementSibling;
+    while (carousel && !carousel.classList.contains('wp-block-cb-carousel')) {
+      carousel = carousel.nextElementSibling;
+    }
+    if (carousel && window.jQuery(carousel).length) {
+      const $carousel = window.jQuery(carousel);
+
+      // Función para actualizar el estado de los botones
+      function updateButtons(currentSlide, slideCount) {
+        if (prevBtn) {
+          if (currentSlide === 0) {
+            prevBtn.classList.add('disabled');
+          } else {
+            prevBtn.classList.remove('disabled');
+          }
+        }
+        if (nextBtn) {
+          if (currentSlide === slideCount - 1) {
+            nextBtn.classList.add('disabled');
+          } else {
+            nextBtn.classList.remove('disabled');
+          }
+        }
+      }
+
+      // Inicializa el estado de los botones al cargar
+      $carousel.on('init', function(event, slick){
+        updateButtons(slick.currentSlide, slick.slideCount);
+      });
+
+      // Actualiza los botones al cambiar de slide
+      $carousel.on('afterChange', function(event, slick, currentSlide){
+        updateButtons(currentSlide, slick.slideCount);
+      });
+
+      // Llama a slickPrev/slickNext y actualiza botones
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          $carousel.slick('slickPrev');
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          $carousel.slick('slickNext');
+        });
+      }
+
+      // Si el carrusel ya está inicializado, actualiza los botones
+      if ($carousel.hasClass('slick-initialized')) {
+        const slick = $carousel.slick('getSlick');
+        updateButtons(slick.currentSlide, slick.slideCount);
+      }
+    }
+  });
+});

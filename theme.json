@@ -35,7 +35,7 @@
 				},
 				{
 					"slug": "foreground",
-					"color": "#1A1A1A",
+					"color": "var(--wp--preset--color--primary-100)",
 					"name": "Text main"
 				},
 				{
