@@ -409,8 +409,7 @@
 			},
 			"h1": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--heading-1)",
-					"lineHeight": "var(--wp--custom--line-height--tiny)"
+					"fontSize": "var(--wp--preset--font-size--heading-1)"
 				}
 			},
 			"h2": {
